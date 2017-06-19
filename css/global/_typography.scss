@@ -1,0 +1,153 @@
+// ////////////////////
+// TYPOGRAPHY
+// ///////////////////
+h2 {
+	@include font-size(26px);
+	font-weight: 500;
+	font-family: $gotham;
+	line-height: 120%;
+	color: $mdgray;
+	margin: 0 0 0.6em;
+	text-transform: uppercase;
+	max-width: 60em;
+	@include mobile {
+		 @include font-size(22px);
+		padding-right: 0;
+		text-align: center;
+	}
+	@include desktop-flip {
+		text-align: center;
+	}
+}
+
+h3 {
+	@include font-size(21px);
+	font-weight: 500;
+	font-family: $gotham;
+	line-height: 125%;
+	margin: 0 0 40px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid $ltgray;
+	color: $dkblue1;
+	text-transform: uppercase;
+	@include mobile {
+		 @include font-size(16px);
+	}
+
+	a {
+		text-decoration: none;
+		color: #fff;
+	}
+	@include desktop-flip {
+		text-align: center;
+	}
+}
+
+h4 {
+	font-weight: 500;
+	font-family: $gotham;
+	line-height: 115%;
+	margin: 20px 0;
+	color: $dkblue1;
+	@include font-size(17px);
+}
+
+h5 {
+	font-weight: 300;
+	font-family: $gotham;
+	line-height: 115%;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin: 0;
+	color: $dkblue1;
+	@include font-size(17px);
+}
+
+p {
+	font-weight: 300;
+	font-family: $gotham;
+	line-height: 150%;
+	color: $dkblue1;
+	margin: 0 0 1.5em;
+	@include desktop-flip {
+		text-align: center;
+	}
+	@include font-size(16px);
+	@include mobile {
+		 @include font-size(14px);
+	}
+
+	em {
+		font-style: italic;
+	}
+}
+
+p.smaller {
+	font-family: $gotham;
+	@include font-size(14px);
+	@include mobile {
+		 @include font-size(12px);
+	}
+}
+
+strong {
+	font-weight: 700;
+}
+
+p a {
+	color: $blue;
+	font-weight: 600;
+	border-bottom: 2px solid transparent;
+	@include transition(all .2s ease-in-out);
+
+	&:hover {
+		border-bottom: 2px solid;
+	}
+}
+// //////////////////////////
+// FORM SECTION TYPOGRAPHY
+// /////////////////////////
+section.form {
+	padding: 90px 0 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	@include mobile {
+		padding: 70px 25px 0;
+		background-attachment: scroll;
+	}
+
+	h2 {
+		color: #fff;
+		max-width: 760px;
+		margin: 0 auto 25px;
+	}
+
+	p {
+		color: #fff;
+		max-width: 50em;
+		margin: 0 auto 1.5em;
+
+		a {
+			color: $ltgray;
+			text-decoration: none;
+			@include transition(all .2s ease);
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
+	hr {
+		width: 100%;
+		max-width: 50em;
+		height: 1px;
+		border: 0;
+		outline: 0;
+		background: rgba(255, 255, 255, 0.5);
+		margin: 25px auto;
+	}
+}
