@@ -1,0 +1,36 @@
+// ////////////////////
+// CTA LINKS & BUTTONS
+// ///////////////////
+.cta-button {
+    display: inline-block;
+    width: auto;
+    min-width: 200px;
+    padding: 0 24px;
+    margin-top: 10px;
+    line-height: 40px;
+    height: 42px;
+    border: 2px solid $green;
+    border-collapse: collapse;
+    border-radius: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: $green;
+    font-family: $gotham;
+    font-weight: 600;
+    font-size: 16px;
+    font-size: 1rem;
+    color: #fff;
+    background-image: none;
+    @include transition(all .3s ease);
+
+    &:hover {
+        background-color: $greenhover;
+        border: 2px solid $greenhover;
+        color: #fff;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+}

@@ -1,0 +1,113 @@
+#global-header {
+    height: auto;
+    text-align: center;
+    background-color: $dkblue1;
+    height: 45px;
+
+    // By default .tagline-link-default displays
+    .tagline-link-payments {
+        display: none;
+    }
+
+    .header-container {
+        max-width: 960px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    img {
+        max-width: 165px;
+        display: inline;
+        position: absolute;
+        padding-top: 10px;
+        left: 0;
+    }
+
+    p {
+        display: inline;
+        font-size: 1rem;
+        color: $light;
+        line-height: 45px;
+        font-family: $forza;
+        padding-left: 150px;
+        font-weight: 300;
+    }
+
+    a {
+        color: $blue;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.8rem;
+        font-family: $gotham;
+        padding-left: 7px;
+        border-bottom: none;
+
+        &:hover {
+            color: $bluehover;
+            text-decoration: none;
+            border-bottom: none;
+        }
+    }
+
+}
+@include desktop-flip {
+    #global-header {
+        margin-bottom: 10px;
+
+        img {
+            left: 10px;
+        }
+
+        span {
+            font-size: 0.9rem;
+        }
+
+        p {
+            display: inline-block;
+            margin-bottom: 0;
+            line-height: 45px;
+            padding-left: 160px;
+        }
+
+        a {
+            display: inline;
+            font-size: 0.7rem;
+            line-height: 1.2rem;
+        }
+    }
+}
+@include tablet-vertical {
+    #global-header {
+        height: auto;
+
+        .header-container img {
+            position: relative;
+            margin: 0 auto;
+            left: 0;
+        }
+
+        p {
+            line-height: 30px;
+            padding-left: 0;
+        }
+
+        a {
+            display: block;
+            font-size: 0.83rem;
+            padding-left: 0;
+        }
+    }
+}
+@include form-flip {
+    #global-header {
+        a {
+            font-size: 0.65rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+        }
+
+    }
+
+}

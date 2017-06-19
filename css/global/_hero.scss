@@ -1,0 +1,125 @@
+// ///////////////////////
+// HERO AREA
+// //////////////////////
+
+.hero-section {
+	display: block;
+	width: 100%;
+	height: auto;
+	text-align: left;
+	background: url($image-path + '/team-center-march2016-hero-default.jpg');
+	padding: 80px 0;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	min-height: 480px;
+	@include desktop-flip {
+		min-height: 480px;
+	}
+	@include mobile {
+		padding: 20px 30px;
+		min-height: 0;
+		background-size: 650px 740px;
+	}
+
+	.primary-title {
+		font-weight: 700;
+		font-family: $forza;
+		line-height: 110%;
+		color: white;
+		margin: 0 0 25px;
+		letter-spacing: -1px;
+		text-transform: inherit;
+		max-width: 700px;
+		@include font-size(56px);
+		@include desktop-small {
+			 @include font-size(56px);
+		}
+		@include desktop-flip {
+			 @include font-size(48px);
+			text-align: center;
+		}
+		@include mobile {
+			 @include font-size(32px);
+			margin: 0 0 10px;
+			letter-spacing: 0;
+		}
+	}
+	//h2
+
+	.subtitle {
+		color: #fff;
+		font-weight: 400;
+		font-size: 17px;
+		font-size: 1.063rem;
+		margin: 0 0 1em;
+		max-width: 700px;
+		@include mobile {
+			font-size: 16px;
+			font-size: 1rem;
+		}
+	}
+
+	ul {
+		list-style-type: circle;
+		margin: 0 0 1.5em 1em;
+	}
+
+	.masthead {
+		@extend %clearfix;
+		width: 100%;
+		text-align: left;
+		@include desktop-flip {
+			margin: 0 auto;
+			max-width: 640px;
+		}
+
+		&.centeredText {
+			text-align: center;
+			padding: 0 20px;
+		}
+	}
+
+	.logo-container {
+		width: 25%;
+		height: 46px;
+		float: left;
+		background-size: contain;
+		background-position: bottom left;
+		overflow: hidden;
+		margin: 1rem 0 0;
+		@include desktop-flip {
+			float: none;
+			width: 38%;
+			background-position: bottom center;
+			margin: 1rem auto 0;
+		}
+		@include mobile {
+			height: auto;
+			width: 68%;
+			margin-top: 0;
+		}
+	}
+
+	.logo-container h1 {
+		margin: 0;
+		text-indent: -1000px;
+	}
+
+	.hero-text {
+		margin: 0;
+		@include desktop-flip {
+			width: 85%;
+			padding-top: 1.5rem;
+		}
+		@include mobile {
+			margin-bottom: 12rem;
+
+			p {
+				font-size: 14px;
+				font-size: 0.825rem;
+			}
+		}
+	}
+}
+// end hero-module

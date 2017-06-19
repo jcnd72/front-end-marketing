@@ -1,0 +1,85 @@
+// ////////////////////
+// FOOTER
+// ///////////////////
+
+#form {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.section-form {
+    background-image: url($image-path + '/product-form-bg.jpg');
+
+    h2,
+    p {
+        color: $light;
+        text-align: center;
+    }
+
+}
+
+footer {
+    min-height: 60px;
+    margin-top: 90px;
+    padding: 20px 0;
+    text-align: center;
+    @include mobile {
+        margin-top: 70px;
+    }
+}
+
+.section-form footer p {
+    font-size: 11px;
+    font-size: 0.688rem;
+    font-weight: 300;
+    font-family: $gotham;
+    line-height: 145%;
+    color: $ltgray;
+    margin: 0;
+    max-width: 100%;
+
+    a {
+        color: $ltgray;
+        text-decoration: none;
+        @include transition(all .2s ease);
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+footer.separate {
+    width: 100%;
+    margin-top: 0;
+    padding: 40px 25px;
+    text-align: center;
+    background: $dkblue1;
+    text-align: left;
+    @include mobile {
+        margin-top: 0;
+    }
+}
+
+footer.separate p {
+    font-size: 11px;
+    font-size: 0.688rem;
+    font-weight: 300;
+    font-family: $gotham;
+    line-height: 145%;
+    color: $mdgray;
+    margin: 0 0 10px;
+    max-width: 100%;
+    text-align: left;
+
+    a {
+        color: $mdgray;
+        text-decoration: none;
+        @include transition(all .2s ease);
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
