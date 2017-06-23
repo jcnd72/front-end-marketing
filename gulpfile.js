@@ -16,7 +16,7 @@ var runSequence = require('run-sequence');
 
 // var s3Bucket = 'assets.ngin.com/site_files/2730/m/lp/lp-template-2/base/modular-template/';
 var sourcePath = '_source';
-var compiledPath = '_dist';
+var compiledPath = '';
 
 gulp.task('sass', function() {
     return gulp.src('_source/scss/**/*.scss')
@@ -28,7 +28,7 @@ gulp.task('sass', function() {
             browsers: ['Last 3 versions']
         }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(compiledPath + '/css'))
+        .pipe(gulp.dest(compiledPath + 'css'))
 });
 
 
@@ -38,7 +38,7 @@ gulp.task('js', function() {
     // .pipe(gulp.dest(compiledPath+'/js'))
     .pipe(uglify({mangle: false}))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest(compiledPath+'/js'));
+    .pipe(gulp.dest(compiledPath+'js'));
 });
 
 gulp.task('build', function(callback) {
