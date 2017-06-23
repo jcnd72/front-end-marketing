@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>SportsEngines</title>
+<meta charset="UTF-8">
+
+<meta name="title" content="SportsEngine" />
+<meta name="description" content="The tools to take back control of your sports life" />
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,width=device-width">
+
+
+<!--Favicon -->
+	<link href="https://assets.ngin.com/site_files/2730/m/lp/favicon.png" type="image/png" rel="icon">
+
+<!-- URL PARAMETERS -->
+<script type="text/javascript" src="https://assets.ngin.com/site_files/2730/m/lp/lp-template-2/global-js/jquery-1.11.0.min.js"></script>
+
+<!--Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="https://assets.ngin.com/site_files/2730/m/lp/lp-template-2/global-css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/prism.css">
+
+
+	<!--Webfonts -->
+<link rel="stylesheet" type="text/css" href="https://assets.ngin.com/site_files/2730/fonts/528183/3F2789B7F563B44AE.css">
+
+
+<!--Scripts -->
+	<script type="text/javascript" src="https://assets.ngin.com/site_files/2730/m/lp/lp-template-2/global-js/modernizr.js"></script>
+	<script src="https://use.fontawesome.com/7c708483ad.js"></script>
+
+
+</head>
+
+<body class="">
+
+
+<div class="main-nav">
+	<div class="logo">
+		<img src="https://assets.ngin.com/site_files/2730/m/lp/new-logos/horizontal-color-white.svg"/>
+	</div>
+	<ul class="nav">
+		<li class="nav-item pages"><a href="index.html"><i class="fa fa-laptop fa-fw" aria-hidden="true"></i>Pages</a></li>
+		<li class="nav-item templates"><a href="templates.html"><i class="fa fa-file-o fa-fw" aria-hidden="true"></i>Templates</a></li>
+		<li class="nav-item partials active"><a href="partials.html"><i class="fa fa-code fa-fw" aria-hidden="true"></i>Partials</a></li>
+		<li class="nav-item testing"><a href="testing-ground.html"><i class="fa fa-flask fa-fw" aria-hidden="true"></i>Testing Ground</a></li>
+	</ul>
+
+</div>
+
+
+<div class="container partials">
+
+	<section class="title-section">
+		<h2>Partials</h2>
+	</section>
+
+	<div class="content-container">
+
+		<section class="content-wrap">
+    <h3>Plugins</h3>
+		<div class="tab-section" id="video-modal">
+
+		<h4>Video Modal</h4>
+		<p>Takes any number of videos and prepends an html block at the top of the body. Choose a video ID and add that id to a button on the page. On click of that button, the script will find the video that has a corresponding id and open it in a modal.  </p>
+
+			<ul class="tabs">
+				<li class="tab-link current scss" data-tab="scss">SCSS</li>
+				<li class="tab-link js" data-tab="js">JS</li>
+			</ul>
+
+				<div class="tab-content scss current">
+					<pre><code class="language-css">
+	.modal-callout,
+	.video-player {
+	    display: none;
+	}
+
+	.modal-wrapper {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    padding: 1rem;
+	    overflow-x: hidden;
+	    overflow-y: auto;
+	    z-index: 9999;
+	    display: none;
+	    background: rgba(black, .8);
+	    @include desktop-flip {
+	        padding: 10px;
+	    }
+
+	    .modal-container {
+	        width: 100%;
+	        margin: 0 auto;
+	        @include desktop-flip {
+	            width: 90%;
+	        }
+	    }
+
+	    .modal-content {
+	        width: 100%;
+	        padding: 1rem 2rem;
+	        text-align: center;
+
+	        .video-wrap {
+	            position: relative;
+	            padding-bottom: 56.25%;
+	            height: 0;
+
+	            iframe {
+	                position: absolute;
+	                top: 0;
+	                left: 0;
+	                width: 100%;
+	                height: 100%;
+	                min-height: 0;
+	            }
+	        }
+	    }
+
+	    h3 {
+	        color: white;
+	        @include font-size(24px);
+	        margin: 1em 0 0.5em;
+	    }
+
+	    .modal-top {
+	        text-align: right;
+	    }
+
+	    .modal-close {
+	        width: 35px;
+	        height: 35px;
+	        border: 0;
+	        background: url($image-path + "/close-icon-knockout.svg") no-repeat center center;
+	        background-size: 35px;
+	        opacity: 0.7;
+	    }
+	}
+				</code></pre>
+				</div>
+				<div class="tab-content js">
+					<pre><code class="language-js">
+			/////////////////////
+      /// VIDEO PLAYERS ///
+      /////////////////////
+      // 1. Video Loader
+      // 2. Click Events
+      // 3. Functions
+
+      // 1. VIDEO LOADER - Only load videos if section has class of active. If it does, load the corresponding video.
+            //       Video ID     |     Video URL
+      videoLoader('powerpay-hero', 'https://www.youtube.com/embed/3w-KPTkHmNQ?rel=0&amp;showinfo=0');
+      videoLoader('powerpay-cheering', 'https://www.youtube.com/embed/3w-KPTkHmNQ?rel=0&amp;showinfo=0');
+
+
+
+      // 2. CLICK EVENTS
+      // Find corresponding video on click of Video Button and play
+      videoButtonClick('powerpay-hero');
+      videoButtonClick('powerpay-cheering');
+
+
+      // Stop the video when the close button is clicked
+      $('.modal-close, #modal-cta').on('click', function (e) {
+          e.preventDefault();
+          stopVideo();
+          window.location.hash = "";
+      });
+
+      // 3. FUNCTIONS
+      function videoLoader(videoID, videoURL) {
+              $('#video-confirm .video-wrap').append('<iframe id="video-player-' + videoID + '" class="video-player"  src="' + videoURL + '" frameborder="0" allowfullscreen=""></iframe>');
+              // If url contains unique play identifier, play video
+              if (window.location.href.indexOf("#video-play-" + videoID) > -1) {
+                  playVideo('#video-player-' + videoID);
+              }
+      }
+
+      function videoButtonClick(videoID) {
+          $('#video-button-' + videoID).on('click', function (e) {
+              e.preventDefault();
+              playVideo('#video-player-' + videoID);
+          });
+      }
+
+      function playVideo(videoPlayer) {
+          var $videolink = $(videoPlayer).attr('src');
+          var $windowHeight = $(window).height();
+
+          $('body, html').addClass("noScroll");
+          $('#video-confirm' + '.modal-wrapper').fadeIn("300");
+          $(videoPlayer).show();
+
+          //Set max-heigth for desktop
+          if ($(window).width() < 768) {
+              $(videoPlayer).css({
+                  maxHeight: 'calc(' + $windowHeight + 'px - 2.5rem)'
+              });
+          } else {
+              $(videoPlayer).css({
+                  maxHeight: 'calc(' + $windowHeight + 'px - 6rem)'
+              });
+          }
+          // Play video right away
+          if ($videolink.includes('autoplay')) {
+              $(videoPlayer).attr('src', $(videoPlayer).attr('src').replace('&autoplay=0', '&autoplay=1'));
+          } else {
+              $(videoPlayer)[0].src += "&autoplay=1";
+          }
+      }
+
+      function stopVideo() {
+          $('body, html').removeClass("noScroll");
+          $('#video-confirm').fadeOut("300");
+          $('.video-player').hide();
+          $('.modal-callout').hide();
+
+          $('.video-player').attr('src', function (i, val) {
+              return val;
+          });
+          $('.video-player').each(function () {
+              var $this = $(this);
+              $this.attr('src', $this.attr('src').replace('&autoplay=1', '&autoplay=0'));
+          });
+      }</code></pre>
+				</div>
+			</div>
+<!--- END TAB 1 -->
+
+<!--- START TAB 2 -->
+			<div class="tab-section in-view">
+
+			<h4>Scrolling Animation</h4>
+			<p>Adds a class of in-view to items once they become in view. You can then add css to animate the object.</p>
+				<ul class="tabs">
+					<li class="tab-link js current" data-tab="js">JS</li>
+				</ul>
+
+
+					<div class="tab-content js current">
+						<pre><code class="language-js">
+	    ///////////////////////
+      // SCROLL ANIMATIONS //
+      ///////////////////////
+
+      var $sections = $('.section-module.active');
+      var $window = $(window);
+
+      function check_if_in_view() {
+          var window_height = $window.height();
+          var window_top_position = $window.scrollTop();
+          var window_bottom_position = (window_top_position + window_height);
+
+          //ELEMENTS
+          $.each($sections, function () {
+              var $element = $(this);
+              var element_height = $element.outerHeight() - 500;
+              var element_top_position = $element.offset().top + 250;
+              var element_bottom_position = (element_top_position + element_height);
+
+              //check to see if this current container is within viewport
+              if ((element_bottom_position >= window_top_position) &&
+                  (element_top_position <= window_bottom_position)) {
+                  $element.addClass('in-view');
+              } else {
+                  // $element.removeClass('in-view');
+              }
+          });
+      }
+
+      // $window.on('scroll resize', check_if_in_view);
+      $(window).on('scroll resize load', function () {
+          check_if_in_view();
+      });
+      $(window).trigger('scroll');
+				</code></pre>
+					</div>
+				</div>
+
+<!-- END TAB 2 -->
+
+
+<!-- START TAB 3 -->
+
+
+<div class="tab-section url-params">
+
+<h4>URL Parameters</h4>
+<p>Grabs the value of any parameters in the url query string.<br/><br/>
+	<u>Example:</u> if url is: .../index.html?title=page&description=desc<br/>
+	Then the first statement below will make var title = page</p>
+	<ul class="tabs">
+		<li class="tab-link js current" data-tab="js">JS</li>
+	</ul>
+				<div class="tab-content js current">
+					<pre><code class="language-js">
+		// Grab the value of title
+		var title = getParam('title');
+
+		// If parameter is found in query string, do something
+		if (title) {
+		// Do stuff
+		}
+
+		/// Get url parameters
+	    function getParam(p) {
+	        var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+	        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	    }
+			</code></pre>
+				</div>
+			</div>
+			<!--- END TAB 3 -->
+
+			<!--- START TAB 4 -->
+
+			<div class="tab-section mkto-forms">
+
+			<h4>Marketo Forms</h4>
+			<p>When mktoForms2 is loaded, append asterix to required fields, add HR's to certain sections, activate confirmation popup on form submit. </p>
+				<ul class="tabs">
+					<li class="tab-link js current" data-tab="js">JS</li>
+				</ul>
+							<div class="tab-content js current">
+								<pre><code class="language-js">
+			MktoForms2.whenReady(function (form) {
+          console.log('form ready');
+
+          $(".mktoAsterix").each(function () {
+              $(this).appendTo($(this).parent());
+          });
+          $("#meetingForm div.mktoFormRow:nth-child(6)").addClass("fullWidthCol");
+          $("#meetingForm div.mktoFormRow:nth-child(11)").addClass("fullWidthCol");
+          //Form submission action
+          form.onSuccess(function (values, followUpUrl) {
+              // Get the form's jQuery element and hide it
+              form.getFormElem().hide();
+              //Hide Form Intro Paragraph
+              $(".formIntro").hide();
+              //Make confirmation visible
+              $('.confirmationMessage').fadeIn("300");
+              // Return false to prevent the submission handler from taking the lead to the follow up url
+              return false;
+          });
+
+          //Make form submittable after modal close
+          $('#closeConfirmation').on('click', function () {
+              $(".mktoButton").prop('disabled', false);
+              form.submittable(true);
+          });
+      });
+						</code></pre>
+							</div>
+						</div>
+
+	<!--- START TAB 4 -->
+
+	<!--- START TAB 5 -->
+	<div class="tab-section" id="gulp">
+
+	<h4>Task Runners</h4>
+	<p>Create a gulpfile.js and package.json in the root of your directory. In the command line, inside your project, run npm init. This will install all dependencies. </p>
+	<p>To begin editting, run gulp watch from within your project. This will compile sass and js into the _dist folder.  </p>
+
+
+		<ul class="tabs">
+			<li class="tab-link current gulp" data-tab="gulp">gulpfile.js</li>
+			<li class="tab-link package" data-tab="package">package.json</li>
+			<li class="tab-link folders" data-tab="folder">Folder Structure</li>
+		</ul>
+
+			<div class="tab-content gulp current">
+				<pre><code class="language-js">
+		var gulp = require('gulp');
+		// var fs = require('fs');
+		// var config = JSON.parse(fs.readFileSync(process.env['HOME'] + '/.aws/fed-credentials'));
+		// var s3 = require('gulp-s3-upload')(config);
+		var sass = require('gulp-sass');
+		var browserSync = require('browser-sync').create();
+		var autopolyfiller = require('gulp-autopolyfiller');
+		var uglify = require('gulp-uglify');
+		var gulpIf = require('gulp-if');
+		var concat = require('gulp-concat');
+		var sourcemaps = require('gulp-sourcemaps');
+		var prefix = require('gulp-autoprefixer');
+		var rename = require('gulp-rename');
+		var include = require('gulp-include');
+		var runSequence = require('run-sequence');
+
+		// var s3Bucket = 'assets.ngin.com/site_files/2730/m/lp/lp-template-2/base/modular-template/';
+		var sourcePath = '_source';
+		var compiledPath = '_dist';
+
+		gulp.task('sass', function() {
+		    return gulp.src('_source/scss/**/*.scss')
+		        .pipe(sourcemaps.init())
+		        .pipe(sass({
+		            outputStyle: 'expanded'
+		        })) // compact, compressed, expanded, nested
+		        .pipe(prefix({
+		            browsers: ['Last 3 versions']
+		        }))
+		        .pipe(sourcemaps.write())
+		        .pipe(gulp.dest(compiledPath + '/css'))
+		});
+
+
+		gulp.task('js', function() {
+		  gulp.src(sourcePath+'/js/[^_]*.js')
+		    // .pipe(include())
+		    // .pipe(gulp.dest(compiledPath+'/js'))
+		    .pipe(uglify({mangle: false}))
+		    .pipe(rename({ suffix: '.min' }))
+		    .pipe(gulp.dest(compiledPath+'/js'));
+		});
+
+		gulp.task('build', function(callback) {
+		    runSequence(['sass', 'minify'],
+		        callback
+		    )
+		})
+
+		gulp.task('default', function(callback) {
+		    runSequence(['sass', 'watch'],
+		        callback
+		    )
+		})
+
+		gulp.task('watch', ['sass', 'js'], function() {
+		    gulp.watch('_source/scss/**/*.scss', ['sass']);
+		    gulp.watch('_source/js/*.js', ['js']);
+		})
+
+		// gulp.task('deploy', ['upload-source']);
+
+			</code></pre>
+			</div>
+			<div class="tab-content package">
+				<pre><code class="language-js">
+		{
+		  "name": "front-end-marketing",
+		  "version": "1.0.0",
+		  "description": "",
+		  "main": "gulpfile.js",
+		  "scripts": {
+		    "test": "echo \"Error: no test specified\" && exit 1"
+		  },
+		  "repository": {
+		    "type": "git",
+		    "url": "git+https://github.com/jcnd72/front-end-marketing.git"
+		  },
+		  "author": "Jordan",
+		  "license": "ISC",
+		  "bugs": {
+		    "url": "https://github.com/jcnd72/front-end-marketing/issues"
+		  },
+		  "homepage": "https://github.com/jcnd72/front-end-marketing#readme",
+		  "devDependencies": {
+		    "browser-sync": "^2.18.8",
+		    "countable": "^2.1.1",
+		    "gulp": "^3.9.1",
+		    "gulp-autopolyfiller": "^1.2.1",
+		    "gulp-autoprefixer": "^3.1.1",
+		    "gulp-concat": "^2.6.1",
+		    "gulp-if": "^2.0.2",
+		    "gulp-include": "^2.3.1",
+		    "gulp-nunjucks-render": "^2.2.1",
+		    "gulp-rename": "^1.2.2",
+		    "gulp-run-sequence": "^0.3.2",
+		    "gulp-sass": "^3.1.0",
+		    "gulp-sourcemaps": "^2.6.0",
+		    "gulp-uglify": "^2.1.2",
+		    "run-sequence": "^1.2.2"
+		  }
+		}
+</code></pre>
+			</div>
+			<div class="tab-content folders">
+	<img src=""/>
+			</div>
+		</div>
+
+
+<!--- START TAB 5 -->
+
+			</div>
+</section>
+</div> <!-- End content container -->
+</div> <!-- End container -->
+
+	<script type="text/javascript" src="js/lp-scripts.min.js"></script>
+	<script type="text/javascript" src="js/prism.min.js"></script>
+
+
+
+</body>
+
+</html>

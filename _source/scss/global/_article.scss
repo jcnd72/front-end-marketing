@@ -1,0 +1,56 @@
+.article {
+    padding: 100px 75px;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .reading-time {
+        margin: 20px 0;
+        padding: 15px;
+        color: $mdgray;
+        border-top: 1px solid $ltgray;
+        border-bottom: 1px solid $ltgray;
+    }
+
+    p {
+        font-size: 17px;
+
+    }
+}
+
+progress {
+    /* Positioning */
+    position: fixed;
+    left: 0;
+    top: 60;
+    z-index: 200;
+
+    /* Dimensions */
+    width: 100%;
+    height: 5px;
+
+    /* Reset the appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Get rid of the default border in Firefox/Opera. */
+    border: none;
+
+    /* Progress bar container for Firefox/IE10+ */
+    background-color: transparent;
+
+    /* Progress bar value for IE10+ */
+    color: $blue;
+}
+
+progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+    background-color: $blue;
+}
+
+progress::-moz-progress-bar {
+    background-color: $blue;
+}
