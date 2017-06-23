@@ -96,6 +96,7 @@ section {
 
 		.link-block {
 			display: block;
+			height: 150px;
 		}
 
 		.links {
@@ -116,7 +117,8 @@ section {
 		img {
 			max-width: 100%;
 			object-fit: cover;
-			height: 150px;
+			height: 100%;
+			width: 100%;
 		}
 	}
 }

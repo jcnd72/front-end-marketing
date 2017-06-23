@@ -29,6 +29,7 @@
 
 <!--Scripts -->
 	<script type="text/javascript" src="https://assets.ngin.com/site_files/2730/m/lp/lp-template-2/global-js/modernizr.js"></script>
+	<script src="https://use.fontawesome.com/7c708483ad.js"></script>
 
 
 </head>
@@ -38,12 +39,13 @@
 
 <div class="main-nav">
 	<div class="logo">
-		<img src="https://assets.ngin.com/site_files/2730/m/lp/new-logos/horizontal-color-black.svg"/>
+		<img src="https://assets.ngin.com/site_files/2730/m/lp/new-logos/horizontal-color-white.svg"/>
 	</div>
 	<ul class="nav">
-		<li class="nav-item"><a href="index.html">Pages</a></li>
-		<li class="nav-item"><a href="templates.html">Templates</a></li>
-		<li class="nav-item active"><a href="partials.html">Partials</a></li>
+		<li class="nav-item pages"><a href="index.html"><i class="fa fa-laptop fa-fw" aria-hidden="true"></i>Pages</a></li>
+		<li class="nav-item templates"><a href="templates.html"><i class="fa fa-file-o fa-fw" aria-hidden="true"></i>Templates</a></li>
+		<li class="nav-item partials active"><a href="partials.html"><i class="fa fa-code fa-fw" aria-hidden="true"></i>Partials</a></li>
+		<li class="nav-item testing"><a href="testing-ground.html"><i class="fa fa-flask fa-fw" aria-hidden="true"></i>Testing Ground</a></li>
 	</ul>
 
 </div>
@@ -229,7 +231,9 @@
       }</code></pre>
 				</div>
 			</div>
+<!--- END TAB 1 -->
 
+<!--- START TAB 2 -->
 			<div class="tab-section in-view">
 
 			<h4>Scrolling Animation</h4>
@@ -279,8 +283,10 @@
 					</div>
 				</div>
 
-<!-- END in-view -->
-<!-- START Url Parameters -->
+<!-- END TAB 2 -->
+
+
+<!-- START TAB 3 -->
 
 
 <div class="tab-section url-params">
@@ -310,6 +316,9 @@
 			</code></pre>
 				</div>
 			</div>
+			<!--- END TAB 3 -->
+
+			<!--- START TAB 4 -->
 
 			<div class="tab-section mkto-forms">
 
@@ -350,15 +359,143 @@
 							</div>
 						</div>
 
-			<!-- END Url Parameters -->
+	<!--- START TAB 4 -->
+
+	<!--- START TAB 5 -->
+	<div class="tab-section" id="gulp">
+
+	<h4>Task Runners</h4>
+	<p>Create a gulpfile.js and package.json in the root of your directory. In the command line, inside your project, run npm init. This will install all dependencies. </p>
+	<p>To begin editting, run gulp watch from within your project. This will compile sass and js into the _dist folder.  </p>
+
+
+		<ul class="tabs">
+			<li class="tab-link current gulp" data-tab="gulp">gulpfile.js</li>
+			<li class="tab-link package" data-tab="package">package.json</li>
+			<li class="tab-link folders" data-tab="folder">Folder Structure</li>
+		</ul>
+
+			<div class="tab-content gulp current">
+				<pre><code class="language-js">
+		var gulp = require('gulp');
+		// var fs = require('fs');
+		// var config = JSON.parse(fs.readFileSync(process.env['HOME'] + '/.aws/fed-credentials'));
+		// var s3 = require('gulp-s3-upload')(config);
+		var sass = require('gulp-sass');
+		var browserSync = require('browser-sync').create();
+		var autopolyfiller = require('gulp-autopolyfiller');
+		var uglify = require('gulp-uglify');
+		var gulpIf = require('gulp-if');
+		var concat = require('gulp-concat');
+		var sourcemaps = require('gulp-sourcemaps');
+		var prefix = require('gulp-autoprefixer');
+		var rename = require('gulp-rename');
+		var include = require('gulp-include');
+		var runSequence = require('run-sequence');
+
+		// var s3Bucket = 'assets.ngin.com/site_files/2730/m/lp/lp-template-2/base/modular-template/';
+		var sourcePath = '_source';
+		var compiledPath = '_dist';
+
+		gulp.task('sass', function() {
+		    return gulp.src('_source/scss/**/*.scss')
+		        .pipe(sourcemaps.init())
+		        .pipe(sass({
+		            outputStyle: 'expanded'
+		        })) // compact, compressed, expanded, nested
+		        .pipe(prefix({
+		            browsers: ['Last 3 versions']
+		        }))
+		        .pipe(sourcemaps.write())
+		        .pipe(gulp.dest(compiledPath + '/css'))
+		});
+
+
+		gulp.task('js', function() {
+		  gulp.src(sourcePath+'/js/[^_]*.js')
+		    // .pipe(include())
+		    // .pipe(gulp.dest(compiledPath+'/js'))
+		    .pipe(uglify({mangle: false}))
+		    .pipe(rename({ suffix: '.min' }))
+		    .pipe(gulp.dest(compiledPath+'/js'));
+		});
+
+		gulp.task('build', function(callback) {
+		    runSequence(['sass', 'minify'],
+		        callback
+		    )
+		})
+
+		gulp.task('default', function(callback) {
+		    runSequence(['sass', 'watch'],
+		        callback
+		    )
+		})
+
+		gulp.task('watch', ['sass', 'js'], function() {
+		    gulp.watch('_source/scss/**/*.scss', ['sass']);
+		    gulp.watch('_source/js/*.js', ['js']);
+		})
+
+		// gulp.task('deploy', ['upload-source']);
+
+			</code></pre>
+			</div>
+			<div class="tab-content package">
+				<pre><code class="language-js">
+		{
+		  "name": "front-end-marketing",
+		  "version": "1.0.0",
+		  "description": "",
+		  "main": "gulpfile.js",
+		  "scripts": {
+		    "test": "echo \"Error: no test specified\" && exit 1"
+		  },
+		  "repository": {
+		    "type": "git",
+		    "url": "git+https://github.com/jcnd72/front-end-marketing.git"
+		  },
+		  "author": "Jordan",
+		  "license": "ISC",
+		  "bugs": {
+		    "url": "https://github.com/jcnd72/front-end-marketing/issues"
+		  },
+		  "homepage": "https://github.com/jcnd72/front-end-marketing#readme",
+		  "devDependencies": {
+		    "browser-sync": "^2.18.8",
+		    "countable": "^2.1.1",
+		    "gulp": "^3.9.1",
+		    "gulp-autopolyfiller": "^1.2.1",
+		    "gulp-autoprefixer": "^3.1.1",
+		    "gulp-concat": "^2.6.1",
+		    "gulp-if": "^2.0.2",
+		    "gulp-include": "^2.3.1",
+		    "gulp-nunjucks-render": "^2.2.1",
+		    "gulp-rename": "^1.2.2",
+		    "gulp-run-sequence": "^0.3.2",
+		    "gulp-sass": "^3.1.0",
+		    "gulp-sourcemaps": "^2.6.0",
+		    "gulp-uglify": "^2.1.2",
+		    "run-sequence": "^1.2.2"
+		  }
+		}
+</code></pre>
+			</div>
+			<div class="tab-content folders">
+	<img src=""/>
+			</div>
+		</div>
+
+
+<!--- START TAB 5 -->
 
 			</div>
 </section>
 </div> <!-- End content container -->
 </div> <!-- End container -->
 
-	<script type="text/javascript" src="js/lp-scripts.js"></script>
-	<script type="text/javascript" src="js/prism.js"></script>
+	<script type="text/javascript" src="js/lp-scripts.min.js"></script>
+	<script type="text/javascript" src="js/prism.min.js"></script>
 
 
 

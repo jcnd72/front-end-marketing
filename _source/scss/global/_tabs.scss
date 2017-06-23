@@ -25,6 +25,14 @@ ul.tabs {
     .js {
         color: #ccb710;
     }
+
+    .gulp {
+        color: #CF4647;
+    }
+
+    .package {
+        color: #C12127;
+    }
 }
 
 ul.tabs li.current {
@@ -38,6 +46,7 @@ ul.tabs li.current {
     padding: 15px;
     color: $dkblue3;
     line-height: 28px;
+    resize: both;
 }
 
 .tab-content.current {

@@ -1,0 +1,36 @@
+{
+  "name": "front-end-marketing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcnd72/front-end-marketing.git"
+  },
+  "author": "Jordan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcnd72/front-end-marketing/issues"
+  },
+  "homepage": "https://github.com/jcnd72/front-end-marketing#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "countable": "^2.1.1",
+    "gulp": "^3.9.1",
+    "gulp-autopolyfiller": "^1.2.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-include": "^2.3.1",
+    "gulp-nunjucks-render": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "run-sequence": "^1.2.2"
+  }
+}
