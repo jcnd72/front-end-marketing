@@ -34,6 +34,33 @@
         });
 
 
+        // Clone popup
+        // -------------------------------------------------
+        $('.template a').on('click', function (e) {
+          e.preventDefault();
+          $('.popup').addClass('inactive').removeClass('active').css({
+            'display': 'none',
+            'top': 'auto',
+            'left': 'auto'
+          });
+          var clickedElementTop = e.currentTarget.offsetTop;
+          var clickedElementHeight = e.currentTarget.parentElement.offsetHeight;
+          var clickedElementLeft = e.currentTarget.offsetLeft;
+          var clickedElementWidth = e.currentTarget.parentElement.offsetWidth;
+          var popupWidth = $('.popup').width();
+          var difference = popupWidth - clickedElementWidth;
+
+          var popupTop = clickedElementTop + clickedElementHeight + 10;
+          var popupLeft = clickedElementLeft - difference / 2;
+          $('.popup').addClass('active').removeClass('inactive').css({
+            'display': 'block',
+            'top': popupTop,
+            'left': popupLeft
+          });
+        });
+
+
+
 
         // Progress Bar
         //--------------------------------------------------
