@@ -146,14 +146,14 @@
 				</div>
 				<div class="tab-content js">
 					<pre><code class="language-js">
-			/////////////////////
+		/////////////////////
       /// VIDEO PLAYERS ///
       /////////////////////
       // 1. Video Loader
       // 2. Click Events
       // 3. Functions
 
-      // 1. VIDEO LOADER - Only load videos if section has class of active. If it does, load the corresponding video.
+      // 1. VIDEO LOADER
             //       Video ID     |     Video URL
       videoLoader('powerpay-hero', 'https://www.youtube.com/embed/3w-KPTkHmNQ?rel=0&amp;showinfo=0');
       videoLoader('powerpay-cheering', 'https://www.youtube.com/embed/3w-KPTkHmNQ?rel=0&amp;showinfo=0');
@@ -287,8 +287,6 @@
 
 
 <!-- START TAB 3 -->
-
-
 <div class="tab-section url-params">
 
 <h4>URL Parameters</h4>
@@ -360,8 +358,148 @@
 						</div>
 
 	<!--- START TAB 4 -->
+	<!-- START TAB 5 -->
+	<div class="tab-section" id="progress-bar">
 
-	<!--- START TAB 5 -->
+	<h4>Reading Progress Bar</h4>
+	<p></p>
+		<ul class="tabs">
+			<li class="tab-link current html" data-tab="html">HTML</li>
+			<li class="tab-link scss" data-tab="scss">SCSS</li>
+			<li class="tab-link js" data-tab="js">JS</li>
+		</ul>
+
+		<div class="tab-content current html">
+			<pre><code class="language-css">
+				// You can put this pretty much anywhere
+			</code></pre>
+		</div>
+
+			<div class="tab-content scss">
+				<pre><code class="language-css">
+		progress {
+		    /* Positioning */
+		    position: fixed;
+		    left: 0;
+		    top: 60;
+		    z-index: 200;
+
+		    /* Dimensions */
+		    width: 100%;
+		    height: 5px;
+
+		    /* Reset the appearance */
+		    -webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+
+		    /* Get rid of the default border in Firefox/Opera. */
+		    border: none;
+
+		    /* Progress bar container for Firefox/IE10+ */
+		    background-color: transparent;
+
+		    /* Progress bar value for IE10+ */
+		    color: $blue;
+		}
+
+		progress::-webkit-progress-bar {
+		    background-color: transparent;
+		}
+
+		progress::-webkit-progress-value {
+		    background-color: $blue;
+		}
+
+		progress::-moz-progress-bar {
+		    background-color: $blue;
+		}
+
+			</code></pre>
+			</div>
+			<div class="tab-content js">
+				<pre><code class="language-js">
+		var getMax = function(){
+        return $(document).height() - $(window).height();
+    }
+
+    var getValue = function(){
+        return $(window).scrollTop();
+    }
+
+    if('max' in document.createElement('progress')){
+        // Browser supports progress element
+        var progressBar = $('progress');
+
+        // Set the Max attr for the first time
+        progressBar.attr({ max: getMax() });
+
+        $(document).on('scroll', function(){
+            // On scroll only Value attr needs to be calculated
+            progressBar.attr({ value: getValue() });
+        });
+
+        $(window).resize(function(){
+            // On resize, both Max/Value attr needs to be calculated
+            progressBar.attr({ max: getMax(), value: getValue() });
+        });
+    }
+    else {
+        var progressBar = $('.progress-bar'),
+            max = getMax(),
+            value, width;
+
+        var getWidth = function(){
+            // Calculate width in percentage
+            value = getValue();
+            width = (value/max) * 100;
+            width = width + '%';
+            return width;
+        }
+
+        var setWidth = function(){
+            progressBar.css({ width: getWidth() });
+        }
+
+        $(document).on('scroll', setWidth);
+        $(window).on('resize', function(){
+            // Need to reset the Max attr
+            max = getMax();
+            setWidth();
+        });
+    }
+
+			</code></pre>
+			</div>
+		</div>
+<!--- END TAB 5 -->
+<!-- START TAB 6 -->
+<div class="tab-section reading-time">
+
+<h4>Dynamic Reading Time</h4>
+<p>Dynamically sets the reading time of an article based on word count. Need to install <a target="_blank" href="https://github.com/RadLikeWhoa/Countable">Countable JS (only 1KB)</a><br/><br/>
+	<ul class="tabs">
+		<li class="tab-link js current" data-tab="js">JS</li>
+	</ul>
+				<div class="tab-content js current">
+					<pre><code class="language-js">
+						var article = $('.article');
+
+		        Countable.once($('.article')[0], function (counter) {
+		          var wpm = 200,
+		            estimatedRaw = counter.words / wpm,
+		            minutes = Math.round(estimatedRaw);
+
+		          var effectiveTime = (minutes < 1) ? "a couple of secs" : minutes + " min read";
+
+		          //display it
+		          $('.reading-time').html(effectiveTime);
+		        });
+			</code></pre>
+				</div>
+			</div>
+			<!--- END TAB 6 -->
+	<!--- START TAB 7 -->
 	<div class="tab-section" id="gulp">
 
 	<h4>Task Runners</h4>
@@ -482,7 +620,7 @@
 </code></pre>
 			</div>
 			<div class="tab-content folders">
-	<img src=""/>
+					<img title="Folder Structure" src="images/folder-structure.png"/>
 			</div>
 		</div>
 

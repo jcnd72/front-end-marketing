@@ -3,13 +3,9 @@
 
 
     $(document).ready(function() {
-      // newPage('Ontario Soccer', 'https://at.sportsengine.com/Ontario-Soccer.html', 'ontario-soccer.png');
 
-      function newPage(name, link, path) {
-          $('.grid').append('<div class="grid-item"><a class="link-block" target="_blank" href="' + link + '"><img alt="Ontario Soccer" title="Ontario Soccer" src="/images/'+ path +'"/></a><div class="details"><h4>'+ name +'</h4><div class="links"><a target="_blank" href="' + link + '">View Page</a></div></div></div>');
-      }
-
-
+      // Tabs
+      //--------------------------------------------------
       	$('ul.tabs li').click(function(e){
           var current_tab_id = '#' + e.target.parentElement.parentElement.id;
           var current_selected_tab = e.target.className.replace('tab-link ', '.');
@@ -21,6 +17,9 @@
       		$(current_tab_id + ' ' + current_selected_tab).addClass('current');
       	});
 
+
+        // Get Article Reading Time
+        //--------------------------------------------------
         var article = $('.article');
 
         Countable.once($('.article')[0], function (counter) {
@@ -35,13 +34,16 @@
         });
 
 
+
+        // Progress Bar
+        //--------------------------------------------------
         var getMax = function(){
             return $(document).height() - $(window).height();
-        }
+        };
 
         var getValue = function(){
             return $(window).scrollTop();
-        }
+        };
 
         if('max' in document.createElement('progress')){
             // Browser supports progress element
@@ -49,6 +51,8 @@
 
             // Set the Max attr for the first time
             progressBar.attr({ max: getMax() });
+            console.log(getMax());
+            console.log(getValue());
 
             $(document).on('scroll', function(){
                 // On scroll only Value attr needs to be calculated
@@ -61,6 +65,7 @@
             });
         }
         else {
+          /// This is for older browsers
             var progressBar = $('.progress-bar'),
                 max = getMax(),
                 value, width;
@@ -71,11 +76,11 @@
                 width = (value/max) * 100;
                 width = width + '%';
                 return width;
-            }
+            };
 
             var setWidth = function(){
                 progressBar.css({ width: getWidth() });
-            }
+            };
 
             $(document).on('scroll', setWidth);
             $(window).on('resize', function(){
